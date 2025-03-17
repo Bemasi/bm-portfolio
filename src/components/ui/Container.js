@@ -6,9 +6,9 @@ import ReactGA from 'react-ga4'
 
 const Container = ({ enableTransition, children }) => {
     const [mounted, setMounted] = useState(false)
-    useEffect(() => {
+    /*useEffect(() => {
         ReactGA.initialize(process.env.NEXT_PUBLIC_UA_CODE)
-    }, [] )
+    }, [] )*/
 
     useEffect(() => {
         setMounted(true)

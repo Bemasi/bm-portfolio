@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.13.0",
+    "@emotion/react": "^11.14.0",
+    "contentful": "^11.5.8",
     "next": "15.2.2",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",

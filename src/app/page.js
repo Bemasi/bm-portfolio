@@ -2,33 +2,45 @@ import Image from "next/image";
 import Container from '../components/ui/Container'
 import Head from "next/head";
 import { Stack } from "@chakra-ui/react";
+import Introduction from "@/components/ui/Introduction";
+import * as contentful from 'contentful'
 
-export default function Index({ introduction, projects, articles, contactMe }) {
-    return (
+
+export default async function Index({ introduction, projects, contactMe }) {
+    const contentClient = contentful.createClient({
+        // This is the space ID. A space is like a project folder in Contentful terms
+        space: 'developer_bookshelf',
+        // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
+        accessToken: '0b7f6x59a0',
+      })
+    let projectsData = await contentClient.getEntries({
+        content_type: 'featuredProjects',
+        order: 'fields.order',
+    })
+    let introData = await contentClient.getEntries({
+        content_type: 'introduction',
+        limit: 2,
+        order: 'sys.createdAt',
+    })
+
+    let contactData = await contentClient.getEntries({
+        content_type: 'contactMe',
+        limit: 1,
+        order: 'sys.createdAt',
+    })
+        return (
         <>
             <Container enableTransition={true}>
-                <Head>
-                    <title>Benjamin Mato - Software Engineer</title>
-                    <meta content="Benjamin Mato - Software Engineer" name="title" />
-
-                    <meta content="Spanish software engineer, licensed in Compute Engineering" name="description" />
-                </Head>
                 <Stack as="main"
                     alignItems="flex-start"
                     mt={{ base: '15vh', md: '20vh' }}
                     pb="144px"
                     spacing={{ base: '100px', md: '144px' }}
                 >
-
+                    <Introduction introduction={introduction} />
                 </Stack>
             </Container>
 
         </>
     )
-
-    /*let client = require('contentful').createClient({
-        space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      })*/
-
-}  
+}
