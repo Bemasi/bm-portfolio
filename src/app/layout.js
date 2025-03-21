@@ -20,6 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html suppressHydrationWarning>
+      <head>
+        <script src="http://localhost:8097"></script>
+      </head>
       <body>
         <Provider>{children}</Provider>
       </body>

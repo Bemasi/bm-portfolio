@@ -9,9 +9,9 @@ import * as contentful from 'contentful'
 export default async function Index({ introduction, projects, contactMe }) {
     const contentClient = contentful.createClient({
         // This is the space ID. A space is like a project folder in Contentful terms
-        space: 'developer_bookshelf',
+        space: process.env.CONTENTFUL_SPACE_ID,
         // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-        accessToken: '0b7f6x59a0',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       })
     let projectsData = await contentClient.getEntries({
         content_type: 'featuredProjects',
@@ -37,7 +37,7 @@ export default async function Index({ introduction, projects, contactMe }) {
                     pb="144px"
                     spacing={{ base: '100px', md: '144px' }}
                 >
-                    <Introduction introduction={introduction} />
+                    <Introduction introduction={introData.items} />
                 </Stack>
             </Container>
 

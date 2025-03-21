@@ -1,4 +1,3 @@
-'use client'
 import {
     Link,
     Text,
@@ -13,8 +12,8 @@ import {
   import useMediaQuery from '../../utils/useMediaQuery'
   import ReactGA from 'react-ga4'
   
-  export default function Introduction({ introduction }) {
-    const isLargerThan800 = useMediaQuery(800)
+  export default function Introduction({  introduction }) {
+    const isLargerThan800 = true// useMediaQuery(800)
     const handleClick = (event) => {
       ReactGA.event({
         category: 'click',
@@ -52,7 +51,7 @@ import {
               fontSize="display2"
               fontWeight="medium"
             >
-              Hey there!, I'm-
+              Hey there!, I&apos;m-
             </Text>
           </Box>
           <Heading
@@ -63,7 +62,7 @@ import {
             lineHeight={'95%'}
             letterSpacing={{ sm: '-1.2px', md: '-1.8px' }}
           >
-            Abdul Rahman.
+            Benjamin Mato.
           </Heading>
         </SlideFade>
   
@@ -82,10 +81,10 @@ import {
             <Box as="span" color="displayColor">
               Software Engineer.
             </Box>{' '}
-            A self-taught developer{' '}
+            A graduated Computer Engineer {' '}
             {isLargerThan800
-              ? 'with an\ninterest in Computer Science.'
-              : 'with an interest in Computer Science.'}
+              ? 'with an\ninterest in Software Developing and IT.'
+              : 'with an interest in Software Developing and IT.'}
           </Heading>
         </SlideFade>
   
@@ -125,7 +124,7 @@ import {
           in={true}
         >
           <Stack isInline spacing={4}>
-            <Link href="https://github.com/abdulrcs" isExternal>
+            <Link href="https://github.com/bemasi" isExternal>
               <Button
                 pos="static"
                 color="white"
@@ -136,7 +135,7 @@ import {
                 Github
               </Button>
             </Link>
-            <Link href="https://linkedin.com/in/abdulrcs" isExternal>
+            <Link href="https://linkedin.com/in/benja_mato" isExternal>
               <Button
                 pos="static"
                 color="white"
@@ -147,7 +146,7 @@ import {
                 LinkedIn
               </Button>
             </Link>
-            <Link href="mailto:abdulrcs1@gmail.com" isExternal>
+            <Link href="mailto:benjamato2017@gmail.com" isExternal>
               <Button
                 pos="static"
                 color="white"
