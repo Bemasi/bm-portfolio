@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Los tokens del diseño, expuestos a Tailwind. `inline` es lo que permite que
+   cambien con el tema: las utilidades apuntan a la variable, no a su valor. */
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-raise: var(--raise);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, Consolas, monospace;
+}
+
+/* Claro: papel de delineante, neutros sesgados al azul verdoso. */
+:root {
+  --ground: #e7ebec;
+  --surface: #f2f5f5;
+  --raise: #ffffff;
+  --ink: #0f171b;
+  --muted: #54686f;
+  --line: #c0cbce;
+  --accent: #8f5400;
+  --grid: rgba(15, 23, 27, 0.06);
+}
+
+/* Oscuro: el plano en negativo. La media query cubre el caso sin JavaScript;
+   next-themes estampa data-theme en cuanto arranca. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="terminal"]) {
+    --ground: #0a1114;
+    --surface: #101a1f;
+    --raise: #16232a;
+    --ink: #dce6e8;
+    --muted: #80939a;
+    --line: #202e35;
+    --accent: #e8a33b;
+    --grid: rgba(220, 230, 232, 0.045);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #0a1114;
+  --surface: #101a1f;
+  --raise: #16232a;
+  --ink: #dce6e8;
+  --muted: #80939a;
+  --line: #202e35;
+  --accent: #e8a33b;
+  --grid: rgba(220, 230, 232, 0.045);
+}
+
+/* Terminal: la variante de la decisión D7. Mismos componentes, otros valores. */
+:root[data-theme="terminal"] {
+  --ground: #080806;
+  --surface: #100e07;
+  --raise: #161206;
+  --ink: #e5c067;
+  --muted: #8e7631;
+  --line: #2c2410;
+  --accent: #ffb000;
+  --grid: rgba(255, 176, 0, 0.06);
+  --font-display: var(--font-plex-mono), ui-monospace, Consolas, monospace;
+  --font-body: var(--font-plex-mono), ui-monospace, Consolas, monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
