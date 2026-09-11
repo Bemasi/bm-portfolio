@@ -4,8 +4,16 @@ Porfolio profesional de Benjamín Mato — desarrollo y arquitectura SAP / ABAP.
 
 ## Estado
 
-En diseño. La web todavía no existe como código: por ahora hay dirección visual,
-un prototipo y el registro de decisiones, todo en [`docs/design/`](docs/design/).
+Sprint 0 de [ocho](docs/plan-desarrollo.md). Están los cimientos —Next.js, los tokens de
+diseño y el cambio de tema—, pero todavía no hay porfolio: la portada actual es la referencia
+viva de tokens y desaparece en el Sprint 2.
+
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run build
+npm run lint
+```
 
 ## El concepto
 
@@ -25,7 +33,7 @@ Todo proyecto se cuenta con seis campos fijos. Los esquemas y las plantillas est
 
 ## Stack previsto
 
-Next.js 15 (App Router, JavaScript) · Tailwind v4 · `next-themes`.
+Next.js 16 (App Router, JavaScript) · Tailwind v4 · `next-themes`.
 
 Sin librería de animación: el scroll ligado a la vista, las transiciones entre vistas y
 los flujos animados son nativos del navegador. El motivo está en

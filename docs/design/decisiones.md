@@ -4,6 +4,23 @@ La más reciente arriba. Cada entrada: qué se decide, por qué, y qué se desca
 
 ---
 
+## 2026-09-12 · D11 · Next.js 16, no 15 · supera parcialmente a D6
+
+Al montar el Sprint 0, la versión publicada era Next 16.3.5. Como el proyecto arrancaba de
+cero, se va con ella en vez de con la 15 que decía D6.
+
+**Por qué:** empezar en la versión anterior solo compra una migración pendiente. El App
+Router no cambia, y Turbopack ya es el empaquetador por defecto.
+
+**Efecto colateral:** `next lint` desapareció en la 16, así que el script de lint llama a
+`eslint` directamente. Y ESLint 10 todavía no funciona con el parser que trae
+`eslint-config-next` 16 — `scopeManager.addGlobals is not a function` — así que se queda en
+ESLint 9 hasta que lo arreglen.
+
+**Lo demás de D6 sigue en pie:** Tailwind v4, `next-themes`, y ninguna librería de animación.
+
+---
+
 ## 2026-09-12 · D10 · Contacto por enlaces, sin formulario
 
 Email y LinkedIn como enlaces. Nada de formulario.

@@ -9,7 +9,7 @@ mirable en la URL pública — nada de ramas largas que no se ven hasta el final
 
 Aplican a todos los sprints:
 
-- **Next.js 15** (App Router, JavaScript, no TypeScript) · **Tailwind v4** vía `@tailwindcss/postcss` · **`next-themes`**.
+- **Next.js 16** (App Router, JavaScript, no TypeScript) · **Tailwind v4** vía `@tailwindcss/postcss` · **`next-themes`**.
 - **Sin librería de animación.** Scroll ligado a la vista con `animation-timeline`, transiciones con View Transitions, flujos con `stroke-dasharray`. `motion` solo entra si una interacción concreta no sale con CSS, y se anota en `decisiones.md` cuando pase.
 - **Bilingüe es/en** desde el principio. Ningún texto vive dentro de un componente.
 - **Ni una captura de pantalla** de sistemas de cliente. Ningún nombre de cliente en ningún sitio.
@@ -33,7 +33,7 @@ solo existió para elegir dirección (D7). Se decide en el Sprint 6.
 
 **Por qué va primero:** hasta que no haya una URL pública, cada sprint siguiente se revisa a ciegas.
 
-- Scaffold de Next.js 15 en JavaScript, App Router, con Tailwind v4 y ESLint.
+- Scaffold de Next.js 16 en JavaScript, App Router, con Tailwind v4 y ESLint.
 - Traducir los tokens del prototipo a `@theme` de Tailwind: los tres juegos (claro, oscuro, terminal), fuentes Archivo / Newsreader / IBM Plex Mono con `next/font`.
 - `next-themes` con el interruptor claro/oscuro, respetando el ajuste del sistema.
 - Desplegar en Vercel desde `dev` con previews automáticas por rama.
