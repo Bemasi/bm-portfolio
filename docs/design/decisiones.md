@@ -4,6 +4,44 @@ La más reciente arriba. Cada entrada: qué se decide, por qué, y qué se desca
 
 ---
 
+## 2026-09-12 · D10 · Contacto por enlaces, sin formulario
+
+Email y LinkedIn como enlaces. Nada de formulario.
+
+**Por qué:** un formulario obliga a una función serverless, protección antispam y un sitio
+donde caigan los mensajes, a cambio de nada que un `mailto:` no haga ya. Cero backend en
+todo el proyecto.
+
+---
+
+## 2026-09-12 · D9 · Bilingüe español e inglés desde el primer día
+
+Rutas `/[lang]` con `es` y `en` generadas estáticamente, y todo el texto fuera de los
+componentes, en archivos de contenido por idioma.
+
+**Por qué:** el mercado SAP es internacional y muchas búsquedas llegan en inglés. Y añadir
+un segundo idioma a un sitio que no lo previó cuesta mucho más que preverlo: obliga a sacar
+a mano cada cadena incrustada en un componente.
+
+**Coste asumido:** cada ficha se escribe dos veces. La traducción va la última, cuando el
+texto en español ya no se mueva.
+
+---
+
+## 2026-09-12 · D8 · La ficha de proyecto es una ruta, no un modal
+
+En el prototipo el detalle se abre como diálogo. En el sitio real cada proyecto tendrá su
+propia URL: `/es/plano/cierre-nocturno`.
+
+**Por qué:** un recruiter comparte el enlace de un proyecto concreto, no el de la portada, y
+Google indexa cada ficha por separado. Un modal no tiene URL que compartir.
+
+**No se pierde la transición:** las View Transitions también funcionan entre documentos
+(`@view-transition { navigation: auto }`), así que el zoom del nodo a la ficha se mantiene, y
+donde el navegador no las soporta simplemente navega sin animación.
+
+---
+
 ## 2026-09-12 · D7 · La variante «terminal» es un juego de tokens, no un diseño aparte
 
 El brutalismo de terminal (ámbar sobre negro, todo monoespaciado) se mantiene vivo como
