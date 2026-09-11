@@ -1,0 +1,489 @@
+<title>Landscape de Sistemas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300..600&display=swap">
+<style>
+:root{
+  --ground:#E7EBEC; --surface:#F2F5F5; --raise:#FFFFFF;
+  --ink:#0F171B; --muted:#54686F; --line:#C0CBCE;
+  --accent:#8F5400;
+  --grid:rgba(15,23,27,.06);
+  --shadow:0 1px 0 rgba(15,23,27,.03), 0 14px 34px -20px rgba(15,23,27,.45);
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  --s--1:.8rem; --s-0:1.0625rem; --s-1:1.3rem; --s-2:1.75rem;
+  --maxw:1140px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A1114; --surface:#101A1F; --raise:#16232A;
+    --ink:#DCE6E8; --muted:#80939A; --line:#202E35;
+    --accent:#E8A33B;
+    --grid:rgba(220,230,232,.045);
+    --shadow:0 0 0 1px rgba(220,230,232,.035), 0 22px 48px -28px #000;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A1114; --surface:#101A1F; --raise:#16232A;
+  --ink:#DCE6E8; --muted:#80939A; --line:#202E35;
+  --accent:#E8A33B;
+  --grid:rgba(220,230,232,.045);
+  --shadow:0 0 0 1px rgba(220,230,232,.035), 0 22px 48px -28px #000;
+}
+/* Variante "brutalismo de terminal": mismos contenidos, otros tokens */
+:root[data-skin="terminal"]{
+  --ground:#080806; --surface:#100E07; --raise:#161206;
+  --ink:#E5C067; --muted:#8E7631; --line:#2C2410;
+  --accent:#FFB000;
+  --grid:rgba(255,176,0,.06);
+  --shadow:0 0 0 1px rgba(255,176,0,.12), 0 0 44px -20px rgba(255,176,0,.5);
+  --body:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --display:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:var(--s-0);
+  line-height:1.6;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+p{margin:0}
+
+/* masthead */
+.masthead{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding-block:18px;border-bottom:1px solid var(--line);
+}
+.mark{
+  font-family:var(--mono);font-size:var(--s--1);letter-spacing:.14em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;color:var(--muted);
+}
+.mark b{color:var(--ink);font-weight:500;letter-spacing:.2em}
+.skins{display:flex;gap:6px;font-family:var(--mono);font-size:var(--s--1)}
+.skins button{
+  font:inherit;cursor:pointer;padding:6px 11px;border:1px solid var(--line);
+  background:transparent;color:var(--muted);border-radius:2px;
+}
+.skins button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.skins button:focus-visible,.node:focus-visible,.close:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* hero */
+.hero{padding-block:clamp(48px,9vw,104px) clamp(36px,6vw,72px);display:grid;gap:26px}
+.eyebrow{
+  font-family:var(--mono);font-size:var(--s--1);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);flex:none}
+h1{
+  font-size:clamp(2.9rem,10vw,6.4rem);font-weight:600;letter-spacing:-.035em;
+  font-variation-settings:"wdth" 100;
+  animation:widen 1.1s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes widen{
+  from{font-variation-settings:"wdth" 74;opacity:.55}
+  to{font-variation-settings:"wdth" 100;opacity:1}
+}
+.role{font-family:var(--mono);font-size:var(--s--1);letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+.lede{max-width:60ch;font-size:var(--s-1);color:var(--muted);line-height:1.55}
+.lede em{color:var(--ink);font-style:normal}
+
+/* landscape */
+.section-head{display:grid;gap:12px;padding-block:clamp(32px,5vw,56px) 26px;border-top:1px solid var(--line)}
+h2{font-size:var(--s-2);font-weight:600;letter-spacing:-.02em}
+.hint{color:var(--muted);font-size:var(--s--1);font-family:var(--mono)}
+
+.plane{position:relative;aspect-ratio:5/3;margin-bottom:clamp(40px,6vw,80px)}
+.wires{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wire{fill:none;stroke:var(--line);stroke-width:1.5}
+.pulse{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:5 95;animation:flow 4.2s linear infinite}
+.pulse.b{animation-delay:-1.05s}
+.pulse.c{animation-delay:-2.1s}
+.pulse.d{animation-delay:-3.15s}
+@keyframes flow{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+
+.hub{
+  position:absolute;left:50%;top:50%;translate:-50% -50%;
+  display:grid;place-items:center;
+  width:clamp(88px,11vw,124px);aspect-ratio:1;
+  background:var(--surface);border:1px solid var(--accent);
+  font-family:var(--mono);font-size:var(--s--1);text-align:center;
+  rotate:45deg;
+}
+.hub > span{rotate:-45deg;display:block}
+.hub b{font-weight:500;letter-spacing:.1em}
+.hub small{color:var(--muted);font-size:.7rem;letter-spacing:.08em}
+
+.node{
+  position:absolute;translate:-50% -50%;
+  width:clamp(190px,21vw,238px);
+  display:grid;gap:6px;text-align:left;
+  padding:14px 16px 16px;
+  background:var(--raise);border:1px solid var(--line);border-radius:3px;
+  box-shadow:var(--shadow);
+  font-family:var(--body);color:inherit;font-size:var(--s--1);
+  cursor:pointer;transition:border-color .25s;
+}
+.node:hover{border-color:var(--accent)}
+.node .id{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.node .name{font-family:var(--display);font-weight:600;font-size:var(--s-0);line-height:1.2;letter-spacing:-.01em}
+.node .metric{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-variant-numeric:tabular-nums}
+
+/* taller: la línea de tiempo */
+.rail-lede{max-width:60ch;color:var(--muted);font-size:var(--s-1);line-height:1.55;padding-bottom:clamp(36px,5vw,62px)}
+.rail-lede em{color:var(--ink);font-style:normal}
+.rail{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  column-gap:16px;row-gap:26px;
+  margin-bottom:clamp(40px,6vw,80px);
+}
+.railline{grid-column:1/-1;grid-row:2;height:0;border-top:1px solid var(--line);position:relative}
+.railline span{
+  position:absolute;top:10px;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+}
+.railline .start{left:0}
+.railline .end{right:0}
+.tproj{position:relative;translate:none;width:auto;align-self:end}
+.rail > .tproj:nth-child(1){grid-column:1;grid-row:1}
+.rail > .tproj:nth-child(2){grid-column:2;grid-row:3;align-self:start}
+.rail > .tproj:nth-child(3){grid-column:3;grid-row:1}
+.rail > .tproj:nth-child(4){grid-column:4;grid-row:3;align-self:start}
+.rail > .tproj:nth-child(5){grid-column:5;grid-row:1}
+.tproj::after{content:"";position:absolute;left:50%;width:1px;height:26px;background:var(--line)}
+.rail > .tproj:nth-child(odd)::after{bottom:-26px}
+.rail > .tproj:nth-child(even)::after{top:-26px}
+.tproj[data-state="vivo"]::after{background:var(--accent)}
+.tproj[data-state="aparcado"]{opacity:.6}
+.chip{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:999px;padding:2px 9px;
+  justify-self:start;color:var(--muted);
+}
+.tproj[data-state="vivo"] .chip{border-color:var(--accent);color:var(--accent)}
+
+/* detalle */
+.scrim{position:fixed;inset:0;background:color-mix(in srgb,var(--ground) 82%,transparent);backdrop-filter:blur(3px);z-index:5}
+.detail{
+  position:fixed;z-index:6;left:50%;top:50%;translate:-50% -50%;
+  width:min(680px,calc(100vw - 32px));max-height:min(86vh,880px);overflow:auto;
+  background:var(--raise);border:1px solid var(--accent);border-radius:3px;
+  box-shadow:var(--shadow);padding:26px 26px 30px;display:grid;gap:22px;
+}
+.detail-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.detail h3{font-size:var(--s-2);font-weight:600;letter-spacing:-.02em}
+.detail .id{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:8px}
+.close{font:inherit;font-family:var(--mono);font-size:var(--s--1);cursor:pointer;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:2px;padding:5px 10px;flex:none}
+.flowline{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:.78rem;color:var(--muted);padding:12px 14px;border:1px dashed var(--line);border-radius:2px}
+.flowline i{font-style:normal;color:var(--accent)}
+.fields{display:grid;gap:16px;margin:0}
+.field{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:baseline}
+.field dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.field dd{margin:0;color:var(--ink)}
+.field.result dd{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+
+/* cierre */
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;padding-block:30px 0;border-top:1px solid var(--line);margin:0}
+.legend div{display:grid;gap:6px}
+.legend dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.legend dd{margin:0;color:var(--muted);font-size:var(--s--1);line-height:1.5}
+.legend code{font-family:var(--mono);font-size:.95em}
+footer{padding-block:38px 56px;color:var(--muted);font-family:var(--mono);font-size:var(--s--1);line-height:1.7}
+
+::view-transition-old(morph),::view-transition-new(morph){animation-duration:.42s}
+
+/* móvil: el plano se vuelve recorrido vertical */
+@media (max-width:760px){
+  .plane{aspect-ratio:auto;display:grid;gap:14px;padding-left:22px;border-left:1px solid var(--line)}
+  .wires{display:none}
+  .hub{position:static;translate:none;rotate:none;width:auto;aspect-ratio:auto;padding:12px;justify-items:start;text-align:left}
+  .hub > span{rotate:none}
+  .node{position:static;translate:none;width:auto}
+  .field{grid-template-columns:1fr;gap:4px}
+  .rail{grid-template-columns:1fr;row-gap:14px;padding-left:22px;border-left:1px solid var(--line)}
+  .railline{display:none}
+  .rail > .tproj{grid-column:auto;grid-row:auto;align-self:auto}
+  .tproj::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,::view-transition-old(morph),::view-transition-new(morph){animation:none!important;transition:none!important}
+  h1{font-variation-settings:"wdth" 100;opacity:1}
+  .pulse{display:none}
+}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="mark"><b>BM</b> <span>prototipo de dirección visual</span></div>
+    <div class="skins" role="group" aria-label="Variante visual">
+      <button type="button" id="skin-plano" data-skin="" aria-pressed="true">Plano</button>
+      <button type="button" id="skin-terminal" data-skin="terminal" aria-pressed="false">Terminal</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Dirección 01 · landscape de sistemas · contenido de ejemplo</p>
+    <h1>Benjamín Mato</h1>
+    <p class="role">Desarrollo y arquitectura SAP · ABAP</p>
+    <p class="lede">Mi trabajo no cabe en una captura de pantalla. Vive en los flujos que conectan sistemas, en las ventanas de proceso que no se pueden ampliar y en los minutos que se le recortan a un cierre nocturno. <em>Así que el porfolio es el plano, no el álbum.</em></p>
+  </section>
+
+  <div class="section-head">
+    <h2>El landscape</h2>
+    <p class="hint">Cada nodo es un proyecto · las líneas son sus flujos · pulsa para entrar</p>
+  </div>
+
+  <div class="plane" id="plane">
+    <svg class="wires" viewBox="0 0 1000 600" aria-hidden="true">
+      <path class="wire" d="M500,300 C420,272 330,198 214,132"/>
+      <path class="wire" d="M500,300 C592,278 664,238 772,188"/>
+      <path class="wire" d="M500,300 C438,352 378,402 296,452"/>
+      <path class="wire" d="M500,300 C592,350 652,412 728,462"/>
+      <path class="pulse a" pathLength="100" d="M500,300 C420,272 330,198 214,132"/>
+      <path class="pulse b" pathLength="100" d="M500,300 C592,278 664,238 772,188"/>
+      <path class="pulse c" pathLength="100" d="M500,300 C438,352 378,402 296,452"/>
+      <path class="pulse d" pathLength="100" d="M500,300 C592,350 652,412 728,462"/>
+    </svg>
+
+    <div class="hub"><span><b>PRD</b><br><small>S/4HANA</small></span></div>
+  </div>
+
+  <div class="section-head">
+    <h2>El taller</h2>
+    <p class="hint">Lo que hago cuando nadie me lo pide · también lo que abandoné</p>
+  </div>
+
+  <p class="rail-lede">El plano de arriba es lo que me pagan por construir. Esto es lo otro: piezas pequeñas, alguna viva, alguna parada y alguna abandonada sin ninguna vergüenza. <em>La línea es el tiempo; la altura no significa nada.</em></p>
+
+  <div class="rail" id="rail"></div>
+
+  <dl class="legend">
+    <div><dt>Sin capturas</dt><dd>Ni una pantalla de cliente. El diagrama sustituye al pantallazo, así que el NDA deja de ser un límite y pasa a ser el estilo.</dd></div>
+    <div><dt>Seis campos</dt><dd>Cada bloque cuenta siempre lo mismo en el mismo orden. El profesional acaba en un resultado medible; el personal, en lo que aprendí.</dd></div>
+    <div><dt>Dos territorios</dt><dd>El plano y el taller comparten lenguaje pero no estructura: uno se organiza por topología, el otro por tiempo. Y el taller admite el fracaso.</dd></div>
+    <div><dt>Sin librerías</dt><dd>El plano son transforms y SVG; los flujos, <code>stroke-dasharray</code>; el zoom a la ficha, View Transitions nativas.</dd></div>
+  </dl>
+
+  <footer>
+    Prototipo desechable. Los nueve proyectos son contenido de ejemplo para enseñar la estructura, no trabajo real.<br>
+    Pruébalo: pulsa cualquier ficha · cambia a «Terminal» · estrecha la ventana · activa «reducir movimiento» en el sistema.
+  </footer>
+</div>
+
+<script>
+/* El plano: proyectos profesionales, organizados por topología. */
+const PRO = [
+  { x:21.4, y:22, id:"Proyecto 01", name:"Cierre de facturación nocturno", tag:"3 h 40 min → 38 min",
+    flow:["ECC 6.0","job batch","IDoc","middleware","WMS"],
+    fields:[
+      ["Sector y escala","Distribución alimentaria · 12 países · 4 sociedades"],
+      ["El problema","El cierre de facturación ya no cabía en la ventana nocturna y retrasaba el arranque del almacén cada mañana."],
+      ["La restricción","ECC 6.0 sin margen para actualizar, y una ventana que no se podía ampliar ni un minuto."],
+      ["La arquitectura","El report de cierre alimentaba por IDoc al middleware, que despertaba al sistema de almacén."],
+      ["Mi intervención","Reescritura con proceso paralelo por paquetes y preagregado en vistas CDS, en lugar de bucles anidados."],
+      ["El resultado","3 h 40 min → 38 min. La ventana nocturna volvió a tener holgura.","result"]
+    ]},
+
+  { x:77.2, y:31.3, id:"Proyecto 02", name:"Migración a S/4HANA", tag:"48 h de parada · 0 incidencias P1",
+    flow:["ECC","SUM / DMO","S/4HANA 2022"],
+    fields:[
+      ["Sector y escala","Industria química · 3 plantas · 900 usuarios"],
+      ["El problema","1.400 objetos Z sin compatibilidad HANA bloqueaban la conversión."],
+      ["La restricción","La parada de producción no podía pasar de 48 horas, fin de semana incluido."],
+      ["La arquitectura","Conversión en sitio con SUM/DMO sobre el mismo landscape, sin sistema puente."],
+      ["Mi intervención","Remediación masiva guiada por ATC y refactor a mano de los 210 objetos del camino crítico."],
+      ["El resultado","48 h de ventana y cero incidencias críticas la semana siguiente.","result"]
+    ]},
+
+  { x:29.6, y:75.3, id:"Proyecto 03", name:"Integración con el canal online", tag:"4 h → 90 s de latencia",
+    flow:["Shop","REST","SAP PO","BAPI","SD"],
+    fields:[
+      ["Sector y escala","Retail · 1,2 M de pedidos al año"],
+      ["El problema","Los pedidos de la web entraban en una carga de madrugada, así que el stock mentía durante todo el día."],
+      ["La restricción","La API de la tienda era inamovible: había que adaptarse a su contrato, no al revés."],
+      ["La arquitectura","La tienda publica en REST, el bus traduce y llama a ventas mediante BAPI."],
+      ["Mi intervención","Capa OData propia y cola con reintentos idempotentes, para que un reproceso nunca duplique un pedido."],
+      ["El resultado","4 h → 90 s de latencia media, con 0,02 % de pedidos en reproceso.","result"]
+    ]},
+
+  { x:72.8, y:77, id:"Proyecto 04", name:"Observabilidad de interfaces", tag:"6 h → 4 min de detección",
+    flow:["colas RFC","CDS","Fiori Elements"],
+    fields:[
+      ["Sector y escala","Logística · 40 interfaces activas"],
+      ["El problema","Las interfaces caídas se descubrían cuando llamaba el cliente, no antes."],
+      ["La restricción","Sin presupuesto para una herramienta de monitorización externa."],
+      ["La arquitectura","Las colas de proceso y los logs de mensajes se exponen en vistas CDS y se pintan en Fiori."],
+      ["Mi intervención","Modelo de estado por interfaz, umbrales por horario y aviso al responsable de cada una."],
+      ["El resultado","Detección media de 6 h a 4 min, con el histórico consultable.","result"]
+    ]}
+];
+
+/* El taller: proyectos personales, organizados por tiempo. Otros seis campos. */
+const STATE = { vivo:"vivo", pausa:"en pausa", aparcado:"aparcado" };
+
+const LAB = [
+  { id:"2021", name:"abapfmt", state:"vivo",
+    fields:[
+      ["Qué es","Un formateador de código ABAP que corre fuera de SAP, en el gancho de pre-commit."],
+      ["De dónde salió","De discutir el sangrado en una revisión de código una vez más."],
+      ["Qué aprendí","Que escribir un parser de verdad enseña más de un lenguaje que diez años usándolo.","result"],
+      ["Estado","Vivo. Lo uso cada semana."],
+      ["Stack","Rust · WebAssembly"],
+      ["Dónde está","github.com/…/abapfmt"]
+    ]},
+
+  { id:"2022", name:"Riego del huerto", state:"vivo",
+    fields:[
+      ["Qué es","Cuatro válvulas, tres sensores de humedad y un panel al que entro desde el móvil."],
+      ["De dónde salió","De volver de vacaciones y encontrarme los tomates secos."],
+      ["Qué aprendí","Que el mundo físico no se porta como la hoja de cálculo: los sensores derivan y hay que calibrarlos a mano.","result"],
+      ["Estado","Vivo, tercera temporada."],
+      ["Stack","ESP32 · MicroPython · MQTT"],
+      ["Dónde está","github.com/…/riego"]
+    ]},
+
+  { id:"2023", name:"Facturas a asiento", state:"pausa",
+    fields:[
+      ["Qué es","Arrastras el PDF de una factura y sale la línea de asiento lista para contabilizar."],
+      ["De dónde salió","De hacerlo a mano cuarenta veces durante un cierre."],
+      ["Qué aprendí","Que el 90 % del problema es fácil y el 10 % que queda son todos los proveedores del mundo.","result"],
+      ["Estado","En pausa. Acierta con seis formatos y se atraganta con el séptimo."],
+      ["Stack","Python · Tesseract"],
+      ["Dónde está","github.com/…/facturas"]
+    ]},
+
+  { id:"2024", name:"Solver de sudokus", state:"aparcado",
+    fields:[
+      ["Qué es","Un resolutor por propagación de restricciones que dibuja su propio backtracking mientras piensa."],
+      ["De dónde salió","De un fin de semana de lluvia."],
+      ["Qué aprendí","Que ver al algoritmo dudar en pantalla explica el backtracking mejor que cualquier texto.","result"],
+      ["Estado","Aparcado al tercer fin de semana, y está bien. No todo tiene que llegar a producción."],
+      ["Stack","TypeScript · Canvas"],
+      ["Dónde está","github.com/…/sudoku"]
+    ]},
+
+  { id:"2026", name:"Este porfolio", state:"vivo",
+    fields:[
+      ["Qué es","La página que estás mirando ahora mismo."],
+      ["De dónde salió","De no encontrar un solo porfolio de mi gremio que no pareciera una plantilla."],
+      ["Qué aprendí","Que el navegador ya trae casi todo aquello para lo que la gente instala una librería.","result"],
+      ["Estado","Vivo, y en obras."],
+      ["Stack","Next.js · CSS nativo"],
+      ["Dónde está","github.com/…/bm-portfolio"]
+    ]}
+];
+
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function card(p, tail, tailClass){
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "node";
+  b.innerHTML = '<span class="id">' + p.id + '</span>' +
+                '<span class="name">' + p.name + '</span>' +
+                '<span class="' + tailClass + '">' + tail + '</span>';
+  b.addEventListener("click", () => openProject(p, b));
+  return b;
+}
+
+const plane = document.getElementById("plane");
+PRO.forEach(p => {
+  const b = card(p, p.tag, "metric");
+  b.style.left = p.x + "%";
+  b.style.top = p.y + "%";
+  plane.appendChild(b);
+});
+
+const rail = document.getElementById("rail");
+LAB.forEach(p => {
+  const b = card(p, STATE[p.state], "chip");
+  b.classList.add("tproj");
+  b.dataset.state = p.state;
+  rail.appendChild(b);
+});
+rail.insertAdjacentHTML("beforeend",
+  '<div class="railline" aria-hidden="true"><span class="start">' + LAB[0].id + '</span><span class="end">hoy</span></div>');
+
+let scrim = null, detail = null, opener = null;
+
+function openProject(p, nodeEl){
+  if (detail) return;
+  opener = nodeEl;
+
+  const build = () => {
+    scrim = document.createElement("div");
+    scrim.className = "scrim";
+    scrim.addEventListener("click", closeProject);
+
+    detail = document.createElement("div");
+    detail.className = "detail";
+    detail.setAttribute("role", "dialog");
+    detail.setAttribute("aria-modal", "true");
+    detail.setAttribute("aria-label", p.name);
+    detail.style.viewTransitionName = "morph";
+    detail.innerHTML =
+      '<div class="detail-top">' +
+        '<div><span class="id">' + p.id + '</span><h3>' + p.name + '</h3></div>' +
+        '<button type="button" class="close">Cerrar</button>' +
+      '</div>' +
+      (p.flow ? '<div class="flowline">' + p.flow.map(s => '<span>' + s + '</span>').join('<i>&rarr;</i>') + '</div>' : '') +
+      '<dl class="fields">' +
+        p.fields.map(f =>
+          '<div class="field' + (f[2] ? ' ' + f[2] : '') + '"><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>'
+        ).join('') +
+      '</dl>';
+
+    document.body.append(scrim, detail);
+    nodeEl.style.viewTransitionName = "";
+    detail.querySelector(".close").addEventListener("click", closeProject);
+  };
+
+  if (document.startViewTransition && !reduce){
+    nodeEl.style.viewTransitionName = "morph";
+    document.startViewTransition(build).finished.then(() => {
+      if (detail) detail.querySelector(".close").focus();
+    });
+  } else {
+    build();
+    detail.querySelector(".close").focus();
+  }
+}
+
+function closeProject(){
+  if (!detail) return;
+  const node = opener;
+  const teardown = () => {
+    scrim.remove();
+    detail.remove();
+    scrim = null;
+    detail = null;
+    if (node) node.style.viewTransitionName = "morph";
+  };
+  const after = () => {
+    if (node){ node.style.viewTransitionName = ""; node.focus(); }
+  };
+  if (document.startViewTransition && !reduce){
+    document.startViewTransition(teardown).finished.then(after);
+  } else {
+    teardown();
+    after();
+  }
+}
+
+addEventListener("keydown", e => { if (e.key === "Escape") closeProject(); });
+
+document.querySelectorAll(".skins button").forEach(b => {
+  b.addEventListener("click", () => {
+    const skin = b.dataset.skin;
+    if (skin) document.documentElement.setAttribute("data-skin", skin);
+    else document.documentElement.removeAttribute("data-skin");
+    document.querySelectorAll(".skins button").forEach(o => o.setAttribute("aria-pressed", String(o === b)));
+  });
+});
+</script>
