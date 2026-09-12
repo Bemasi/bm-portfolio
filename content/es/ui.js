@@ -19,6 +19,7 @@ export const ui = {
     titulo: "El plano",
     entradilla: "Proyectos profesionales, ordenados por qué habla con qué.",
     proyecto: "Proyecto",
+    volver: "Volver al plano",
     centro: { sistema: "PRD", nota: "S/4HANA" },
     campos: {
       sector: "Sector y escala",
@@ -34,6 +35,7 @@ export const ui = {
     titulo: "El taller",
     entradilla: "Proyectos personales, ordenados por cuándo empezaron.",
     estados: { vivo: "vivo", pausa: "en pausa", aparcado: "aparcado" },
+    volver: "Volver al taller",
     campos: {
       que: "Qué es",
       origen: "De dónde salió",
@@ -43,5 +45,5 @@ export const ui = {
       donde: "Dónde está",
     },
   },
-  pie: "Sprint 2 · el plano. Las fichas de proyecto llegan en el Sprint 3.",
+  pie: "Sprint 3 · el plano y sus fichas. El taller llega en el Sprint 4.",
 };

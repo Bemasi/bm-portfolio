@@ -4,6 +4,34 @@ La más reciente arriba. Cada entrada: qué se decide, por qué, y qué se desca
 
 ---
 
+## 2026-09-12 · D14 · Entre el plano y la ficha se navega con `<a>`, no con `<Link>`
+
+Los enlaces del nodo a su ficha y el de vuelta son anclas nativas. `next/link` se queda para
+el selector de idioma y para lo que no cruce esta frontera.
+
+**Por qué:** `@view-transition { navigation: auto }` solo actúa en navegaciones **entre
+documentos**. `<Link>` las intercepta y hace enrutado de cliente, que nunca pasa por esa
+regla: la transición sencillamente no ocurriría. D8 ya decía «entre documentos»; esto es lo
+que hace falta para que sea verdad.
+
+De paso resuelve el foco sin una línea de JavaScript. Al entrar, `autofocus` en el `<h1>`
+—que es navegación de documento, así que el navegador lo respeta—. Al volver, el enlace
+apunta a `/es#<slug>`: el navegador deja el foco en el nodo del que salimos, que es
+justo lo que pedía el sprint.
+
+**Descartado:** `experimental.viewTransition` de Next con el `<ViewTransition>` de React.
+Mete un flag experimental y una API de React para conseguir lo que el navegador ya hace
+solo, y ata el efecto a una versión concreta del framework.
+
+**Coste asumido:** en esos enlaces se pierden el prefetch y el enrutado de cliente. Son diez
+páginas estáticas: la navegación completa es un GET de HTML ya generado.
+
+**Comprobado:** `e2e/humo.spec.js` corre en Chromium —que tiene transición entre documentos—
+y en Firefox —que no la tiene—. Las dieciséis pruebas pasan en los dos: donde no hay
+transición hay navegación normal, sin salto ni hueco.
+
+---
+
 ## 2026-09-12 · D13 · La raíz redirige a español, sin negociar por cabecera
 
 `/` devuelve un 307 a `/es`. No se mira `Accept-Language`.

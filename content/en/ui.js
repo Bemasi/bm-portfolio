@@ -19,6 +19,7 @@ export const ui = {
     titulo: "The map",
     entradilla: "Professional projects, arranged by what talks to what.",
     proyecto: "Project",
+    volver: "Back to the map",
     centro: { sistema: "PRD", nota: "S/4HANA" },
     campos: {
       sector: "Sector and scale",
@@ -34,6 +35,7 @@ export const ui = {
     titulo: "The workshop",
     entradilla: "Personal projects, arranged by when they started.",
     estados: { vivo: "alive", pausa: "paused", aparcado: "shelved" },
+    volver: "Back to the workshop",
     campos: {
       que: "What it is",
       origen: "Where it came from",
@@ -43,5 +45,5 @@ export const ui = {
       donde: "Where it lives",
     },
   },
-  pie: "Sprint 2 · the map. Project pages land in Sprint 3.",
+  pie: "Sprint 3 · the map and its project pages. The workshop lands in Sprint 4.",
 };
