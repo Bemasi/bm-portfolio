@@ -1,0 +1,46 @@
+/** Interface strings. The keys of `campos` are the project object's own keys
+ *  and their order is the render order: never repeat a label in the data. */
+export const ui = {
+  meta: {
+    title: "Benjamín Mato — SAP / ABAP",
+    description:
+      "SAP development and architecture portfolio. A map of systems, not an album of screenshots.",
+  },
+  idioma: "Language",
+  tema: {
+    grupo: "Theme",
+    system: "System",
+    light: "Light",
+    dark: "Dark",
+    terminal: "Terminal",
+  },
+  plano: {
+    nav: "The map",
+    titulo: "The map",
+    entradilla: "Professional projects, arranged by what talks to what.",
+    proyecto: "Project",
+    campos: {
+      sector: "Sector and scale",
+      problema: "The problem",
+      restriccion: "The constraint",
+      arquitectura: "The architecture",
+      intervencion: "My contribution",
+      resultado: "The outcome",
+    },
+  },
+  taller: {
+    nav: "The workshop",
+    titulo: "The workshop",
+    entradilla: "Personal projects, arranged by when they started.",
+    estados: { vivo: "alive", pausa: "paused", aparcado: "shelved" },
+    campos: {
+      que: "What it is",
+      origen: "Where it came from",
+      aprendido: "What I learned",
+      estadoTexto: "Status",
+      stack: "Stack",
+      donde: "Where it lives",
+    },
+  },
+  pie: "Sprint 1 · content model. No design yet: the map lands in Sprint 2.",
+};

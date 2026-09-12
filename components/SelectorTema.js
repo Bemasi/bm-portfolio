@@ -5,14 +5,10 @@ import { useTheme } from "next-themes";
 
 const sinCambios = () => () => {};
 
-const OPCIONES = [
-  { valor: "system", etiqueta: "Sistema" },
-  { valor: "light", etiqueta: "Claro" },
-  { valor: "dark", etiqueta: "Oscuro" },
-  { valor: "terminal", etiqueta: "Terminal" },
-];
+// El orden de los botones; las etiquetas vienen del diccionario del idioma.
+const VALORES = ["system", "light", "dark", "terminal"];
 
-export function SelectorTema() {
+export function SelectorTema({ etiquetas }) {
   const { theme, setTheme } = useTheme();
 
   // En el servidor no sabemos qué tema tiene el visitante, así que hasta que
@@ -27,10 +23,10 @@ export function SelectorTema() {
   return (
     <div
       role="group"
-      aria-label="Tema"
+      aria-label={etiquetas.grupo}
       className="flex flex-wrap gap-1.5 font-mono text-xs"
     >
-      {OPCIONES.map(({ valor, etiqueta }) => {
+      {VALORES.map((valor) => {
         const activo = hidratado && theme === valor;
         return (
           <button
@@ -44,7 +40,7 @@ export function SelectorTema() {
                 : "border-line text-muted hover:border-accent"
             }`}
           >
-            {etiqueta}
+            {etiquetas[valor]}
           </button>
         );
       })}

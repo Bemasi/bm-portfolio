@@ -4,9 +4,10 @@ Porfolio profesional de Benjamín Mato — desarrollo y arquitectura SAP / ABAP.
 
 ## Estado
 
-Sprint 0 de [ocho](docs/plan-desarrollo.md). Están los cimientos —Next.js, los tokens de
-diseño y el cambio de tema—, pero todavía no hay porfolio: la portada actual es la referencia
-viva de tokens y desaparece en el Sprint 2.
+Sprint 1 de [ocho](docs/plan-desarrollo.md). Están los cimientos —Next.js, los tokens de
+diseño y el cambio de tema— y el modelo de contenido: `/es` y `/en` se generan desde
+`content/<idioma>/`, y el selector de idioma conserva la página. Todavía no hay diseño: la
+portada lista los proyectos en crudo hasta el Sprint 2.
 
 ```bash
 npm install

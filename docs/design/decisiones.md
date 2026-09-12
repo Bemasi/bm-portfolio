@@ -4,6 +4,34 @@ La más reciente arriba. Cada entrada: qué se decide, por qué, y qué se desca
 
 ---
 
+## 2026-09-12 · D13 · La raíz redirige a español, sin negociar por cabecera
+
+`/` devuelve un 307 a `/es`. No se mira `Accept-Language`.
+
+**Por qué:** negociar el idioma obliga a middleware, y el middleware convierte una página
+estática en una petición con lógica en cada visita. El sitio son ocho páginas: el selector
+está siempre visible y un enlace compartido ya trae el idioma en la ruta.
+
+**Descartado:** middleware de negociación, y una raíz que muestre el selector antes de entrar.
+
+---
+
+## 2026-09-12 · D12 · El slug de cada ficha es el mismo en los dos idiomas
+
+`/es/plano/cierre-nocturno` y `/en/plano/cierre-nocturno`. Se traduce el contenido, no la URL.
+
+**Por qué:** el selector de idioma conserva la página cambiando solo el primer segmento de la
+ruta. Con slugs traducidos haría falta una tabla de correspondencias por sección y por idioma
+para que cada enlace siga apuntando a su gemelo.
+
+**Coste asumido:** el slug va en español para un lector inglés. Pesa poco: casi todos son
+nombres propios o términos técnicos, y es texto que no se lee, se pega.
+
+**Se comprueba en el Sprint 3**, cuando existan las rutas de ficha: si los slugs divergen
+entre idiomas, `generateStaticParams` debe romper la build en vez de dejar enlaces rotos.
+
+---
+
 ## 2026-09-12 · D11 · Next.js 16, no 15 · supera parcialmente a D6
 
 Al montar el Sprint 0, la versión publicada era Next 16.3.5. Como el proyecto arrancaba de
