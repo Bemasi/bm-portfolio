@@ -19,6 +19,7 @@ export const ui = {
     titulo: "The map",
     entradilla: "Professional projects, arranged by what talks to what.",
     proyecto: "Project",
+    centro: { sistema: "PRD", nota: "S/4HANA" },
     campos: {
       sector: "Sector and scale",
       problema: "The problem",
@@ -42,5 +43,5 @@ export const ui = {
       donde: "Where it lives",
     },
   },
-  pie: "Sprint 1 · content model. No design yet: the map lands in Sprint 2.",
+  pie: "Sprint 2 · the map. Project pages land in Sprint 3.",
 };

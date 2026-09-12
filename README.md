@@ -4,10 +4,11 @@ Porfolio profesional de Benjamín Mato — desarrollo y arquitectura SAP / ABAP.
 
 ## Estado
 
-Sprint 1 de [ocho](docs/plan-desarrollo.md). Están los cimientos —Next.js, los tokens de
-diseño y el cambio de tema— y el modelo de contenido: `/es` y `/en` se generan desde
-`content/<idioma>/`, y el selector de idioma conserva la página. Todavía no hay diseño: la
-portada lista los proyectos en crudo hasta el Sprint 2.
+Sprint 2 de [ocho](docs/plan-desarrollo.md). Están los cimientos —Next.js, los tokens de
+diseño y el cambio de tema—, el modelo de contenido bilingüe y el plano: los proyectos
+profesionales se ven como nodos conectados al centro, con los flujos pulsando por las
+líneas y un recorrido vertical por debajo de 760px. El taller sigue en crudo hasta el
+Sprint 4, y las fichas de proyecto llegan en el Sprint 3.
 
 ```bash
 npm install

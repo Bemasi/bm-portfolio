@@ -86,6 +86,34 @@
   }
 }
 
+/* El plano. El hilo es la topología: siempre visible, siempre quieto. El pulso
+   es el flujo que lo recorre. `pathLength="100"` reescala cada curva a 100
+   unidades, así que el guion tarda lo mismo en la línea corta que en la larga
+   y las cuatro pulsan al mismo ritmo sin ajustar nada a mano. */
+.hilo {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.5;
+}
+
+.flujo {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 5 95;
+  animation: flujo 4.2s linear infinite;
+}
+
+@keyframes flujo {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -93,5 +121,11 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Parar el pulso lo dejaría congelado como un trazo suelto sobre el hilo.
+     Desaparece: la topología se sigue leyendo entera. */
+  .flujo {
+    display: none;
   }
 }

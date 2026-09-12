@@ -19,6 +19,7 @@ export const ui = {
     titulo: "El plano",
     entradilla: "Proyectos profesionales, ordenados por qué habla con qué.",
     proyecto: "Proyecto",
+    centro: { sistema: "PRD", nota: "S/4HANA" },
     campos: {
       sector: "Sector y escala",
       problema: "El problema",
@@ -42,5 +43,5 @@ export const ui = {
       donde: "Dónde está",
     },
   },
-  pie: "Sprint 1 · modelo de contenido. Sin diseño todavía: el plano llega en el Sprint 2.",
+  pie: "Sprint 2 · el plano. Las fichas de proyecto llegan en el Sprint 3.",
 };

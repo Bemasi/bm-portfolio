@@ -96,9 +96,32 @@ El slug de cada ficha es el mismo en los dos idiomas (D12): el selector de idiom
 el primer segmento de la ruta. Cuando el Sprint 3 cree las rutas de ficha, su
 `generateStaticParams` debe romper la build si los slugs divergen.
 
+## El plano
+
+`components/plano/Plano.js` dibuja un `viewBox` de 1000×600 dentro de un contenedor con
+`aspect-[5/3]`: el mismo aspecto. Por eso la `posicion` en porcentaje de cada proyecto cae
+directa en coordenadas del SVG y las curvas acaban exactamente donde está su nodo. **La
+geometría sale del dato, no de rutas dibujadas a mano** — el prototipo las tiene fijas, aquí
+las calcula `cable()`. Para mover un proyecto se toca `posicion` en `content/<lang>/plano.js`
+y nada más.
+
+`pathLength="100"` en cada pulso reescala la curva a 100 unidades, así que el `stroke-dasharray`
+tarda lo mismo en la línea corta que en la larga. Los cuatro se reparten el mismo ciclo con
+`animation-delay` negativo, calculado por índice.
+
+El corte de móvil es **760px**, que no es un breakpoint de Tailwind: se escribe como variante
+arbitraria `max-[760px]:`. Por debajo, el SVG desaparece y los nodos vuelven al flujo del
+documento (`static`, `translate-none`, `rotate-none`) como recorrido vertical. El orden del
+DOM es el de los datos, así que el recorrido con teclado y el de lectura coinciden.
+
+`.hilo` y `.flujo` viven en `globals.css`, no en utilidades: son propiedades SVG que Tailwind
+solo expresa con valores arbitrarios. Con `prefers-reduced-motion` el pulso se oculta entero
+— congelarlo dejaría un trazo suelto sobre el hilo.
+
 ## Estado actual
 
-Sprint 1 terminado. `/es` y `/en` se generan desde los archivos de contenido y la portada
-lista los proyectos en crudo: es una comprobación del modelo de datos, no diseño — el plano
-la sustituye en el Sprint 2. Los nueve proyectos son contenido de ejemplo hasta el Sprint 6.
-Sigue pendiente desplegar en Vercel.
+Sprint 2 terminado. El plano se ve en los dos idiomas con los cuatro proyectos, y el enlace
+de cada nodo ya apunta a `/[lang]/plano/[slug]` — la ruta la crea el Sprint 3, hasta entonces
+da 404. El taller de la portada sigue siendo la lista en crudo del Sprint 1 hasta el Sprint 4.
+Los nueve proyectos son contenido de ejemplo hasta el Sprint 6. Sigue pendiente desplegar en
+Vercel.
